@@ -1,0 +1,33 @@
+@use "../../styles/global.scss" as *;
+
+.header-tasks {
+  display: flex;
+  background-color: $blue;
+  padding-top: 2.3rem;
+
+  &-menu {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 4rem;
+  }
+
+  &-menu li {
+    font-family: $alt-font;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  #active {
+    color: $blue;
+    background-color: $white;
+    padding: 0.5rem 2.5rem;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
+  }
+
+  #unactive {
+    color: $white;
+  }
+}
