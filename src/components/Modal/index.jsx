@@ -21,10 +21,13 @@ export const Modal = ({ isOpen, onClose, options, task }) => {
                             !options ? "Deseja excluir este item?" : "Deseja editar este item?"
                         }
                     </h3>
-                    <p className="modal-wrapper__task">{task.description}</p>
+                    <p className="modal-wrapper__task">
+                        {
+                            task.description ? task.description : "Item sem descrição"
+                        }</p>
                     <div className="modal-wrapper__btns">
                         <button onClick={handleClose}>Não</button>
-                        <button>Sim</button>
+                        <button onClick={handleClose}>Sim</button>
                     </div>
                 </div>
             </div>

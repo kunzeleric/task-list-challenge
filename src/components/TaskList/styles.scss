@@ -11,10 +11,50 @@
     font-size: 2.5rem;
     font-family: $alt-font;
     color: $white;
+    text-align: center;
+  }
+
+  &-form {
+    display: flex;
+    gap: 1rem;
+    padding-top: 4rem;
+
+    &__input {
+      flex: 1;
+      border-radius: 8px;
+      padding: 1.2rem;
+      width: 35rem;
+      font-size: 1.5rem;
+    }
+
+    &__btn {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.5rem 1rem;
+      border: 0;
+      border-radius: 8px;
+
+      background-color: $blue;
+      color: $white;
+      
+      font-size: 1.5rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.1s;
+
+      &:hover{
+        background-color: rgb(3, 55, 243);
+      }
+    }
+  }
+
+  .hidden {
+    visibility: hidden;
   }
 
   &-table {
-    padding-top: 6rem;
+    padding-top: 2rem;
     padding-bottom: 2rem;
     overflow: auto;
     flex: 1;
@@ -77,8 +117,15 @@
   font-size: 1.7rem;
   cursor: pointer;
   color: #fff;
+
+  transition: all 0.1s;
 }
 
 .icon:hover {
   color: $blue;
+  transform: scale(1.2);
+}
+
+#newTask:hover{
+  border: 1px solid $blue;
 }
