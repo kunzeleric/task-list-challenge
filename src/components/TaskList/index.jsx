@@ -100,9 +100,11 @@ export const TaskList = ({ data }) => {
                 <Modal 
                     isOpen={isOpen} 
                     onClose={handleCloseModal} 
-                    selectedTask={selectedTask} 
+                    selectedTask={selectedTask}
+                    allTasks={tasks}
                     options={options}
                     onDelete={handleDeleteTask}
+                    setTasks={setTasks}
                 />
                 <table>
                     <thead>
