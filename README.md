@@ -15,5 +15,5 @@ It's task list app that lets you add new tasks and see details of the tasks.
 
 ## New Implementations
 
-- Feature 1 => Make it possible for the user to delete tasks.
-- Feature 2 => Make it possible for the user to edit tasks.
+- Feature 1 => Make it possible for the user to delete tasks
+- Feature 2 => Make it possible for the user to edit tasks
