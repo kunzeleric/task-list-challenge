@@ -31,7 +31,25 @@
   &__task {
     font-size: 1.5rem;
     color: $black;
-    padding: 5rem 0;
+    padding-block: 4rem;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    padding: 2rem 0 ;
+
+    &-input {
+      width: 70%;
+      height: 2.5rem;
+      border-radius: 10px;
+      border: 0;
+      text-indent: 1rem;
+      font-size: 1.5rem;
+    }
+
   }
 
   &__btns {
