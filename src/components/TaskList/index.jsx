@@ -51,6 +51,12 @@ export const TaskList = ({ data }) => {
         document.querySelector('form').classList.remove('hidden');
     }
 
+    const handleDeleteTask = (task) => {
+        const tasksWithoutDeletedOne = tasks.filter(item => item.id !== task.id);
+        setTasks(tasksWithoutDeletedOne);
+        setIsOpen(false);
+    }
+
     return (
         <div className="tasklist">
             <h2 className="tasklist-title" >
@@ -80,7 +86,8 @@ export const TaskList = ({ data }) => {
                     isOpen={isOpen} 
                     onClose={handleCloseModal} 
                     task={taskData} 
-                    options={options} 
+                    options={options}
+                    onDelete={handleDeleteTask}
                 />
                 <table>
                     <thead>
