@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './styles.scss';
 
-export const Modal = ({ isOpen, onClose, options, task, onDelete }) => {
+export const Modal = ({ isOpen, onClose, options, selectedTask, onDelete }) => {
     const [isModalOpen, setIsModalOpen] = useState(isOpen);
     useEffect(() => {
         setIsModalOpen(isOpen);
@@ -13,7 +13,7 @@ export const Modal = ({ isOpen, onClose, options, task, onDelete }) => {
     }
 
     const handleDelete = () => {
-        onDelete(task);
+        onDelete(selectedTask);
     }
 
     return (
@@ -27,8 +27,9 @@ export const Modal = ({ isOpen, onClose, options, task, onDelete }) => {
                             </h3>
                             <p className="modal-wrapper__task">
                                 {
-                                    task.description ? task.description : "Item sem descrição"
-                                }</p>
+                                    selectedTask.description ? selectedTask.description : "Item sem descrição"
+                                }
+                            </p>
                             <div className="modal-wrapper__btns">
                                 <button onClick={handleClose}>Não</button>
                                 <button onClick={handleDelete}>Sim</button>
@@ -41,8 +42,9 @@ export const Modal = ({ isOpen, onClose, options, task, onDelete }) => {
                             </h3>
                             <p className="modal-wrapper__task">
                                 {
-                                    task.description ? task.description : "Item sem descrição"
-                                }</p>
+                                    selectedTask.description ? selectedTask.description : "Item sem descrição"
+                                }
+                            </p>
                             <div className="modal-wrapper__btns">
                                 <button onClick={handleClose}>Não</button>
                                 <button>Sim</button>

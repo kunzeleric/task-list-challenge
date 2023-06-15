@@ -6,7 +6,7 @@ import { Modal } from '../Modal';
 export const TaskList = ({ data }) => {
     const [isOpen, setIsOpen] = useState(false);// gerencia o modal
     const [options, setOptions] = useState(null); // gerencia estado da opção selecionada (editar ou remover)
-    const [taskData, setTaskData] = useState(null); // gerenciar a tarefa clicada
+    const [selectedTask, setSelectedTask] = useState(null); // gerenciar a tarefa clicada
     const [input, setInput] = useState(""); // gerenciar input da tarefa nova
     const [tasks, setTasks] = useState(data); // gerencia os dados das tarefas
 
@@ -18,16 +18,16 @@ export const TaskList = ({ data }) => {
         setIsOpen(false);
     }
 
-    const handleRemove = (item) => {
+    const handleRemoveModal = (item) => {
         setOptions(false);
         handleOpenModal();
-        setTaskData(item);
+        setSelectedTask(item);
     }
 
-    const handleEdit = (item) => {
+    const handleEditModal = (item) => {
         setOptions(true);
+        setSelectedTask(item);
         handleOpenModal();
-        setTaskData(item);
     }
 
     const handleTaskChange = (event) => {
@@ -37,7 +37,7 @@ export const TaskList = ({ data }) => {
     const handleTaskSubmit = (event) => {
         event.preventDefault();
         const newTask = {
-            id: Math.floor(Math.random() * 10000),
+            id: Math.floor(Math.random() * 1000),
             title: input,
             description: '',
             completed: false
@@ -55,6 +55,21 @@ export const TaskList = ({ data }) => {
         const tasksWithoutDeletedOne = tasks.filter(item => item.id !== task.id);
         setTasks(tasksWithoutDeletedOne);
         setIsOpen(false);
+    }
+
+    const handleCheckTask = (item) => {
+        setSelectedTask(item);
+        const updatedTasks = tasks.map(task => {
+            if(task.id === item.id){
+                return {
+                    ...task,
+                    completed: !task.completed
+                };
+            }
+            return task;
+        })
+
+        setTasks(updatedTasks);
     }
 
     return (
@@ -85,7 +100,7 @@ export const TaskList = ({ data }) => {
                 <Modal 
                     isOpen={isOpen} 
                     onClose={handleCloseModal} 
-                    task={taskData} 
+                    selectedTask={selectedTask} 
                     options={options}
                     onDelete={handleDeleteTask}
                 />
@@ -106,19 +121,19 @@ export const TaskList = ({ data }) => {
                                         <td className="tasklist-table__status">
                                             {
                                                 item.completed === true
-                                                    ? <CheckSquare className="icon" weight="regular" />
-                                                    : <Square className="icon" weight="regular" />
+                                                    ? <CheckSquare onClick={() => handleCheckTask(item)} className="icon" weight="regular" />
+                                                    : <Square onClick={() => handleCheckTask(item)} className="icon" weight="regular" />
                                             }
                                         </td>
                                         <td className="tasklist-table__options">
                                             <TrashSimple
                                                 className="icon"
-                                                onClick={() => handleRemove(item)}
+                                                onClick={() => handleRemoveModal(item)}
                                                 weight="fill"
                                             />
                                             <PencilSimple
                                                 className="icon"
-                                                onClick={() => handleEdit(item)}
+                                                onClick={() => handleEditModal(item)}
                                                 weight="fill"
                                             />
                                         </td>
