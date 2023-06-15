@@ -55,10 +55,15 @@
       font-size: 1.5rem;
     }
 
+    &-input::placeholder{
+      color: #9a9a9a;
+    }
+
   }
 
   &__btns {
     display: flex;
+    justify-content: center;
     align-items: center;
     gap: 1.275rem;
   }
