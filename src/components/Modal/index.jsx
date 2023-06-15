@@ -72,33 +72,38 @@ export const Modal = ({ isOpen, onClose, options, selectedTask, onDelete, setTas
                         </div>
                         :
                         <div className="modal-wrapper">
-                            <h3 className="modal-wrapper__title">
-                                Deseja editar este item?
-                            </h3>
                             {
                                 !edit ?
-                                    <p className="modal-wrapper__task">
-                                        {
-                                            selectedTask.description ? selectedTask.description : "Item sem descrição"
-                                        }
-                                    </p>
+                                    <>
+                                        <h3 className="modal-wrapper__title">
+                                            Deseja editar este item?
+                                        </h3>
+                                        <p className="modal-wrapper__task">
+                                            {
+                                                selectedTask.description ? selectedTask.description : "Item sem descrição"
+                                            }
+                                        </p>
+                                    </>
                                     : null
                             }
 
                             {
                                 edit ?
                                     <>
+                                        <h3 className="modal-wrapper__title">
+                                            Edite sua tarefa abaixo e salve depois :)
+                                        </h3>
                                         <form onSubmit={handleSubmit} className="modal-wrapper__form">
                                             <div className="modal-wrapper__form-inputs">
                                                 <input
                                                     onChange={handleTitleChange}
-                                                    placeholder={selectedTask.title}
+                                                    placeholder="Altere o titulo da tarefa"
                                                     value={editTitle}
                                                     type="text"
                                                     className="modal-wrapper__form-input"
                                                 />
                                                 <input
-                                                    placeholder={selectedTask.description}
+                                                    placeholder="Altere a descrição da tarefa"
                                                     onChange={handleDescriptionChange}
                                                     value={editDescription}
                                                     type="text"
